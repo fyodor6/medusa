@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medusa's Domain - CTF</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0b0f0a;
+            background-image: url('medusa-background.png'); /* Ensure your Medusa image is saved with this filename */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #8dae92;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .content-container {
+            position: relative;
+            padding: 20px;
+            margin-top: 35vh; /* Positions text cleanly below Medusa's face */
+            z-index: 2;
+        }
+
+        /* Dark themed title with eerie shadow */
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.2rem;
+            letter-spacing: 2px;
+            color: #2f603c; /* Darker Halloween green theme */
+            text-shadow: 
+                0 0 10px rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(10, 30, 15, 0.9),
+                0 0 30px rgba(47, 96, 60, 0.4);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #8dae92;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            font-style: italic;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+        }
+
+        /* CTF Flag Box Styling */
+        .flag-box {
+            background: rgba(8, 15, 10, 0.85);
+            border: 2px solid #2f603c;
+            padding: 1.2rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(20, 50, 30, 0.5);
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .flag-box:hover {
+            border-color: #438755;
+            box-shadow: 0 0 30px rgba(47, 96, 60, 0.4), inset 0 0 20px rgba(20, 50, 30, 0.7);
+            transform: scale(1.02);
+        }
+
+        .flag-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.5rem;
+            color: #4ade80;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+        }
+
+        /* Interactive Tooltip */
+        .tooltip {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2f603c;
+            color: #e2f5e5;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-weight: bold;
+        }
+
+        .flag-box.copied .tooltip {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-container">
+        <h1>Medusa's Domain</h1>
+        <p class="subtitle">Dare to lock eyes with the serpent woman and claim your prize.</p>
+        
+        <!-- CTF Flag Centerpiece -->
+        <div class="flag-box" id="flagBox" title="Click to copy flag">
+            <div class="flag-text"></div>
+            <div class="tooltip" id="tooltip">Copied to clipboard!</div>
+        </div>
+    </div>
+
+    <script>
+        // Copy flag to clipboard on click
+        const flagBox = document.getElementById('flagBox');
+        const flagText = '';
+
+        flagBox.addEventListener('click', () => {
+            navigator.clipboard.writeText(flagText).then(() => {
+                flagBox.classList.add('copied');
+                setTimeout(() => {
+                    flagBox.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy flag: ', err);
+            });
+        });
+    </script>
+
+</body>
+</html>
+```[cite: 1]
